@@ -9,7 +9,7 @@ import HomeScreen from './src/screens/HomeScreen';
 function App() {
   return (
     <SafeAreaProvider>
-      <StatusBar barStyle="dark-content" backgroundColor="#FFFFFF" />
+      <StatusBar barStyle="dark-content" />
       <SafeAreaView style={styles.safeArea}>
         <HomeScreen />
       </SafeAreaView>

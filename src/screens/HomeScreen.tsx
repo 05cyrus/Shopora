@@ -1,10 +1,11 @@
 import { StyleSheet, Text, View } from 'react-native';
+import { products } from '../data/products';
 
 function HomeScreen() {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Shopora</Text>
-      <Text style={styles.subtitle}>Your shopping starts here</Text>
+      <Text style={styles.subtitle}>{products.length} products available</Text>
     </View>
   );
 }

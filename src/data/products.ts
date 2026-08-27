@@ -6,7 +6,7 @@ import { Product } from '../types/product';
 export const products: Product[] = [
   {
     id: '1',
-    name: 'Wireless Headphones',
+    name: 'Wirelesss Headphones',
     description:
       'Over-ear headphones with active noise cancellation and 30-hour battery life.',
     price: 2499,

@@ -1,15 +1,17 @@
-import { Image, StyleSheet, Text, View } from 'react-native';
+import { Image, Pressable, StyleSheet, Text, View } from 'react-native';
 import { Product } from '../types/product';
 
-// The props this component accepts. Anyone using ProductCard
-// must pass exactly one thing: a product.
 type ProductCardProps = {
   product: Product;
+  onPress: () => void;
 };
 
-function ProductCard({ product }: ProductCardProps) {
+function ProductCard({ product, onPress }: ProductCardProps) {
   return (
-    <View style={styles.card}>
+    <Pressable
+      onPress={onPress}
+      style={({ pressed }) => [styles.card, pressed && styles.cardPressed]}
+    >
       <Image source={{ uri: product.image }} style={styles.image} />
 
       <View style={styles.info}>
@@ -23,7 +25,7 @@ function ProductCard({ product }: ProductCardProps) {
           {!product.inStock && <Text style={styles.outOfStock}>Out of stock</Text>}
         </View>
       </View>
-    </View>
+    </Pressable>
   );
 }
 
@@ -68,6 +70,9 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: '700',
     color: '#1A1A1A',
+  },
+ cardPressed: {
+    opacity: 0.6,
   },
   outOfStock: {
     fontSize: 12,

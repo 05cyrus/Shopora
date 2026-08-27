@@ -1,15 +1,26 @@
+import type { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { FlatList, StyleSheet, View } from 'react-native';
 import ProductCard from '../components/ProductCard';
 import { products } from '../data/products';
+import type { RootStackParamList } from '../types/navigation';
 
-function HomeScreen() {
+type Props = NativeStackScreenProps<RootStackParamList, 'Home'>;
+
+function HomeScreen({ navigation }: Props) {
   return (
     <View style={styles.container}>
       <FlatList
         data={products}
         keyExtractor={item => item.id}
         contentContainerStyle={styles.listContent}
-        renderItem={({ item }) => <ProductCard product={item} />}
+        renderItem={({ item }) => (
+          <ProductCard
+            product={item}
+            onPress={() =>
+              navigation.navigate('ProductDetails', { productId: item.id })
+            }
+          />
+        )}
       />
     </View>
   );

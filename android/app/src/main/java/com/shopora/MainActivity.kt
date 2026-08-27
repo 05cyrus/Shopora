@@ -1,5 +1,6 @@
 package com.shopora
 
+import android.os.Bundle
 import com.facebook.react.ReactActivity
 import com.facebook.react.ReactActivityDelegate
 import com.facebook.react.defaults.DefaultNewArchitectureEntryPoint.fabricEnabled
@@ -14,9 +15,13 @@ class MainActivity : ReactActivity() {
   override fun getMainComponentName(): String = "Shopora"
 
   /**
-   * Returns the instance of the [ReactActivityDelegate]. We use [DefaultReactActivityDelegate]
-   * which allows you to enable New Architecture with a single boolean flags [fabricEnabled]
+   * Required by react-native-screens. Passing null prevents Android from restoring
+   * stale fragment state when the activity is recreated, which would crash navigation.
    */
+  override fun onCreate(savedInstanceState: Bundle?) {
+    super.onCreate(null)
+  }
+
   override fun createReactActivityDelegate(): ReactActivityDelegate =
       DefaultReactActivityDelegate(this, mainComponentName, fabricEnabled)
 }
